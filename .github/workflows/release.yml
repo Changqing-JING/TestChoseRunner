@@ -1,0 +1,17 @@
+name: Release
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  release:
+    strategy:
+      matrix:
+        runner:
+          - ${{ github.repository_owner == 'Changqing-JING' && 'ubuntu-24.04-arm' || 'atc-ubuntu-arm-latest' }}
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - name: Show
+        run: uname -a
